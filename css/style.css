@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* line 5, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +20,37 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../Ruby21/lib/ruby/gems/2.1.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -70,7 +61,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*------------------------------*\
     Base g├®n├®rique
 /*------------------------------*/
-/* line 12, ../sass/_base.scss */
 html, body {
   font-family: verdana;
   font-size: 16px;
@@ -78,12 +68,10 @@ html, body {
   height: 100%;
 }
 
-/* line 18, ../sass/_base.scss */
 h1 {
   font-family: lobster;
 }
 
-/* line 19, ../sass/_base.scss */
 a {
   text-decoration: none;
   color: inherit;
@@ -92,7 +80,6 @@ a {
 /*------------------------------*\
     Header
 /*------------------------------*/
-/* line 26, ../sass/_base.scss */
 .header {
   position: fixed;
   left: 0;
@@ -101,10 +88,11 @@ a {
   line-height: 66px;
   color: #fff;
   background: blue;
+  z-index: 1;
 }
 
-/* line 35, ../sass/_base.scss */
 .header-logo {
+  font-family: lobster;
   font-weight: bold;
   padding: 0 25px;
   float: left;
@@ -113,11 +101,9 @@ a {
 /*-----------------------------*\
     Menu-top
 /*-----------------------------*/
-/* line 44, ../sass/_base.scss */
-.menu-top a {
-  padding: 0 10px;
+.menu-top {
+  a-padding: 0 10px;
 }
-/* line 45, ../sass/_base.scss */
 .menu-top a:hover {
   color: #c6ff00;
 }
@@ -125,13 +111,120 @@ a {
 /*-----------------------------*\
     Site-container
 /*-----------------------------*/
-/* line 50, ../sass/_base.scss */
 .site-container {
   position: absolute;
   top: 66px;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+}
+
+/*-- $Variables --*/
+/*-- Responsive Portable <750px --*/
+@media only screen and (max-width: 750px) {
+  /*-- Forcer les positions height pour garantir les positions absolute --*/
+  .bloc-container, .menu-pusher, .site-container {
+    height: 100%;
+  }
+
+  /*-- Emp├®cher le deplacement du site sur portable --*/
+  .bloc-container {
+    overflow: hidden;
+  }
+
+  /*-- Creation icon hamburger en utilisant le box-shadow --*/
+  .header-icon {
+    position: relative;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 66px;
+    cursor: pointer;
+  }
+  .header-icon:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 1em;
+    height: 0;
+    top: 16px;
+    left: 16px;
+    -moz-box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff;
+    -webkit-box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff;
+    box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff;
+  }
+
+  /*-- Uniquement pour v2 --*/
+  .site-container {
+    top: 0px;
+    background: #fff;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    /* Inerie sur Ios */
+  }
+
+  /*-- Permet de mettre menu-top ├á height:100% --*/
+  .header {
+    position: static;
+  }
+
+  /*-- Placement pusher TranslateX 0.px --*/
+  .menu-pusher {
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+
+  /*-- Menu-top --*\
+      Width : largeur.px
+      Passage menu en verticale
+      Cacher menu TranslateX - width-menu-top.px
+  /*----------------*/
+  .menu-top {
+    position: absolute;
+    left: 0;
+    top: 66px;
+    bottom: 0;
+    background-color: #0000e6;
+    width: 250px;
+    /*-- uniquement pour v1 --* 
+      @include transform(translateX($menu-top-width * -1 )); //v1
+      @include transition-duration(0.3s); */
+    /*-- Permet un deroulement sur ecran tactile --*/
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu-top a {
+    display: block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid blue;
+  }
+
+ /*-- With-sidebar --*\
+    Integration ├á body en js
+    Pusher translateX + width-menu-top.px
+    Affichage site-cache
+/*----------------*/
+  .width-sidebar .menu-pusher {
+    -moz-transform: translateX(250px);
+    -ms-transform: translateX(250px);
+    -webkit-transform: translateX(250px);
+    transform: translateX(250px);
+  }
+  .width-sidebar .site-cache {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 }

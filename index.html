@@ -2,13 +2,19 @@
     <head>
         <meta charset="utf-8">
         <title>Menu responsive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0' maximum-scale=1.0"/>
         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/style.css"> 
     </head>
     
     <body>
-       <!-- Menu header -->
-        <header class="header"><a href="" class="header-logo">Logo</a>
+    
+      <div class="bloc-container">
+      
+      <!-- Placement menu header v2 -->
+        <header class="header">
+               <a href="" class="header-icon" id="header-icon"></a>
+               <a href="" class="header-logo">Logo</a>
                 <nav class="menu-top">
                     <a href="#">Item 1</a>
                     <a href="#">Item 2</a>
@@ -18,9 +24,26 @@
                 </nav>
             </header>
            <!-- Fin menu header -->
+      <div class="menu-pusher">
            
+           <!-- Placement menu header v1 
+        <header class="header">
+               <a href="" class="header-icon" id="header-icon"></a>
+               <a href="" class="header-logo">Logo</a>
+                <nav class="menu-top">
+                    <a href="#">Item 1</a>
+                    <a href="#">Item 2</a>
+                    <a href="#">Item 2</a>
+                    <a href="#">Item 3</a>
+                    <a href="#">Item 4</a>
+                </nav>
+            </header>
+           <!-- Fin menu header -->
             <!-- Contenu du site -->
             <div class="site-container">
+               <!-- site-cache -->
+               <div class="site-cache" id="site-cache"></div>
+               <!-- Fin site-cache -->
                 <div class="container-12">
                     <h1> Menu responsive </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum consectetur maxime doloribus rem eligendi, vel impedit eos quae repudiandae. Dolorum sed voluptatibus impedit in tempora! Excepturi, optio atque explicabo pariatur!</p>
@@ -34,6 +57,13 @@
                 </div>
             </div>
              <!-- Fin contenu site --> 
+             </div>
+             </div>
+             <!-- Fin bloc-container et menu-pusher -->
             
+            <!-- js -->
+            
+        <script src="js/vendor/jquery-2.js"></script>
+        <script src="js/menu_responsive.js"></script>
     </body>
 </html>
